@@ -6,9 +6,12 @@ import "@mantine/core/styles.css";
 
 function DataTable() {
   const data = useSelector((state) => state.data);
-  const filteredData = data;
+  const [filteredData, setfilteredData] = useState(data);
   const [selectedRows, setSelectedRows] = useState([]);
-  console.log(filteredData);
+  const [customer, setCustomer] = useState("");
+  const [department, setDepartment] = useState("");
+  // console.log(filteredData);
+
   const rows = filteredData.map((ele) => (
     <Table.Tr key={ele.name}>
       <Table.Td>
@@ -42,15 +45,32 @@ function DataTable() {
                   width: "20vw",
                   background: "transparent",
                   color: "white",
-                },}} />
+                },}}
+                value={customer}
+                onChange={(e) => setCustomer(e.target.value)} />
         <Input placeholder="Department" styles={{
                 input: {
-                  width: "20vw",
+                  width: "20vw",    
                   background: "transparent",
                   color: "white",
-                },}} />
+                },}}
+                value={department}
+                onChange={e => setDepartment(e.target.value)} />
 
-        <Button variant="filled" style ={{width:"9vw", minWidth:"80px"}}>Search</Button>
+        <Button variant="filled" style ={{width:"9vw", minWidth:"80px"}} onClick={() => {
+          setfilteredData(
+            data.filter(
+              (ele) =>
+              {
+                if(customer === "" && department === "") return true;
+                if(customer === "" && department !== "") return ele.department === department;
+                if(customer !== "" && department === "") return ele.name === customer;
+                if(customer !== "" && department !== "") return ele.name === customer && ele.department === department;
+              }
+            )
+          );
+          console.log(customer, department)
+        }}>Search</Button>
       </div>
       <div className="border-1 border-zinc-500 grow-1">
           <Table className="text-zinc-200">
