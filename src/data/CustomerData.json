@@ -1,0 +1,75 @@
+{
+    "customerInfo": [
+    {
+        "name": "John Doe",
+        "department": "Sales",
+        "email_id": "john.doe@example.com",
+        "contact_no": "1234567890",
+        "pan_no": "ABCDE1234F",
+        "adhar_card_no": "1234-5678-9012",
+        "valid_till": "2025-12-31"
+    },
+    {
+        "name": "Jane Smith",
+        "department": "Marketing",
+        "email_id": "jane.smith@example.com",
+        "contact_no": "0987654321",
+        "pan_no": "FGHIJ5678K",
+        "adhar_card_no": "2345-6789-0123",
+        "valid_till": "2026-11-30"
+    },
+    {
+        "name": "Alice Johnson",
+        "department": "HR",
+        "email_id": "alice.johnson@example.com",
+        "contact_no": "1122334455",
+        "pan_no": "KLMNO9012P",
+        "adhar_card_no": "3456-7890-1234",
+        "valid_till": "2024-10-29"
+    },
+    {
+        "name": "Bob Brown",
+        "department": "IT",
+        "email_id": "bob.brown@example.com",
+        "contact_no": "2233445566",
+        "pan_no": "QRSTU3456V",
+        "adhar_card_no": "4567-8901-2345",
+        "valid_till": "2027-09-28"
+    },
+    {
+        "name": "Charlie Davis",
+        "department": "Finance",
+        "email_id": "charlie.davis@example.com",
+        "contact_no": "3344556677",
+        "pan_no": "WXYZA6789B",
+        "adhar_card_no": "5678-9012-3456",
+        "valid_till": "2028-08-27"
+    },
+    {
+        "name": "Diana Evans",
+        "department": "Operations",
+        "email_id": "diana.evans@example.com",
+        "contact_no": "4455667788",
+        "pan_no": "BCDEF1234G",
+        "adhar_card_no": "6789-0123-4567",
+        "valid_till": "2029-07-26"
+    },
+    {
+        "name": "Ethan Foster",
+        "department": "Logistics",
+        "email_id": "ethan.foster@example.com",
+        "contact_no": "5566778899",
+        "pan_no": "CDEFG5678H",
+        "adhar_card_no": "7890-1234-5678",
+        "valid_till": "2030-06-25"
+    },
+    {
+        "name": "Fiona Green",
+        "department": "Customer Service",
+        "email_id": "fiona.green@example.com",
+        "contact_no": "6677889900",
+        "pan_no": "DEFGH9012I",
+        "adhar_card_no": "8901-2345-6789",
+        "valid_till": "2031-05-24"
+    }
+]}
