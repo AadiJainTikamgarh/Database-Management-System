@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Table, Checkbox, MantineProvider, Input, Button } from "@mantine/core";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "@mantine/core/styles.css";
 
 function DataTable() {
@@ -11,6 +11,12 @@ function DataTable() {
   const [customer, setCustomer] = useState("");
   const [department, setDepartment] = useState("");
   // console.log(filteredData);
+
+  useEffect(()=> {
+    if(customer === "" && department === ""){
+      setfilteredData(data)
+    }
+  }, [customer, department])
 
   const rows = filteredData.map((ele) => (
     <Table.Tr key={ele.name}>
@@ -36,44 +42,63 @@ function DataTable() {
   ));
 
   return (
-    <div className="flex flex-col gap-3 p-4 px-5 w-dvw h-dvh bg-zinc-950">
-        <MantineProvider>
-      <div className="flex justify-end gap-4">
-        
-        <Input placeholder="Customer Name" styles={{
-                input: {
-                  width: "20vw",
-                  background: "transparent",
-                  color: "white",
-                },}}
-                value={customer}
-                onChange={(e) => setCustomer(e.target.value)} />
-        <Input placeholder="Department" styles={{
-                input: {
-                  width: "20vw",    
-                  background: "transparent",
-                  color: "white",
-                },}}
-                value={department}
-                onChange={e => setDepartment(e.target.value)} />
+    <div className="flex flex-col gap-3 p-4 px-5 w-full h-dvh bg-zinc-950">
+      <MantineProvider>
+        <div className="flex justify-end gap-4">
+          <Input
+            placeholder="Customer Name"
+            styles={{
+              input: {
+                width: "20vw",
+                background: "transparent",
+                color: "white",
+              },
+            }}
+            value={customer}
+            onChange={(e) => setCustomer(e.target.value)}
+          />
+          <Input
+            placeholder="Department"
+            styles={{
+              input: {
+                width: "20vw",
+                background: "transparent",
+                color: "white",
+              },
+            }}
+            value={department}
+            onChange={(e) => setDepartment(e.target.value)}
+          />
 
-        <Button variant="filled" style ={{width:"9vw", minWidth:"80px"}} onClick={() => {
-          setfilteredData(
-            data.filter(
-              (ele) =>
-              {
-                if(customer === "" && department === "") return true;
-                if(customer === "" && department !== "") return ele.department === department;
-                if(customer !== "" && department === "") return ele.name === customer;
-                if(customer !== "" && department !== "") return ele.name === customer && ele.department === department;
-              }
-            )
-          );
-          console.log(customer, department)
-        }}>Search</Button>
-      </div>
-      <div className="border-1 border-zinc-500 grow-1">
-          <Table className="text-zinc-200">
+          <Button
+            variant="filled"
+            style={{ width: "9vw", minWidth: "80px" }}
+            onClick={() => {
+              setfilteredData(
+                data.filter((ele) => {
+                  if (customer === "" && department === "") return true;
+                  if (customer === "" && department !== "")
+                    return ele.department.toLowerCase() === department.toLowerCase();
+                  if (customer !== "" && department === "")
+                    return ele.name.toLowerCase() === customer.toLowerCase();
+                  if (customer !== "" && department !== "")
+                    return (
+                      ele.name.toLowerCase() === customer.toLowerCase() && ele.department.toLowerCase() === department.toLowerCase()
+                    );
+                })
+              );
+              console.log(customer, department);
+            }}
+          >
+            Search
+          </Button>
+        </div>
+        <div className="border-1 border-zinc-500 overflow-y-scroll [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-zinc-800 [&::-webkit-scrollbar]:w-2">
+          <Table
+            className="text-zinc-200"
+            highlightOnHover
+            highlightOnHoverColor="rgb(24 24 27)"
+          >
             <Table.Thead>
               <Table.Tr>
                 <Table.Th />
@@ -85,9 +110,9 @@ function DataTable() {
             </Table.Thead>
             <Table.Tbody>{rows}</Table.Tbody>
           </Table>
+        </div>
+      </MantineProvider>
     </div>
-        </MantineProvider>
-      </div>
   );
 }
 

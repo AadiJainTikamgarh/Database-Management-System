@@ -8,7 +8,9 @@ import store from "./Store/store.js";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <App />
+      <div className="w-dvw h-dvh overflow-hidden">
+        <App />
+      </div>
     </Provider>
   </StrictMode>
 );
