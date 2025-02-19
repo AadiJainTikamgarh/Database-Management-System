@@ -10,7 +10,6 @@ function DataTable() {
   const [selectedRows, setSelectedRows] = useState([]);
   const [customer, setCustomer] = useState("");
   const [department, setDepartment] = useState("");
-  // console.log(filteredData);
 
   useEffect(()=> {
     if(customer === "" && department === ""){
@@ -42,7 +41,7 @@ function DataTable() {
   ));
 
   return (
-    <div className="flex flex-col gap-3 p-4 px-5 w-full h-dvh bg-zinc-950">
+    <div className="flex flex-col gap-3 p-4 px-5 w-full h-[97vh] bg-zinc-950">
       <MantineProvider>
         <div className="flex flex-col items-end gap-2">
           <div className="flex justify-end gap-4">
