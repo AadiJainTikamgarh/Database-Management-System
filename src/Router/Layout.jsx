@@ -4,7 +4,7 @@ import Copyright from '../Pages/Copyright'
 function Layout() {
     return (
       <>
-        <div className='w-dvw h-dvh bg-zinc-950 flex flex-col'>
+        <div className='w-dvw h-dvh bg-zinc-200 flex flex-col'>
           <Outlet />
           <Copyright />
         </div>
